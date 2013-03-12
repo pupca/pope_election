@@ -58,8 +58,8 @@ app_path = "/var/www/#{app_name}/current"
 worker_processes 3
 preload_app true
 timeout 180
-#listen "/var/www/sockets/#{app_name}/#{app_name}.sock", :backlog => 1024
-listen 8080, :tcp_nopush => true
+listen "/var/www/sockets/#{app_name}/#{app_name}.sock", :backlog => 64
+#listen 8080, :tcp_nopush => true
 
 # Spawn unicorn master worker for user apps (group: apps)
 user 'root', 'root' 
