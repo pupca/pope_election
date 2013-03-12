@@ -1,7 +1,7 @@
-require 'sinatra'
- 
-set :environment, :production
-disable :run
- 
-require File.join(File.dirname(__FILE__), 'pope')
+root = ::File.dirname(__FILE__)
+require ::File.join( root, 'pope' )
+# run Pope.new
+
+#require 'pope'
+
 run Sinatra::Application

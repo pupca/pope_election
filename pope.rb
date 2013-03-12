@@ -1,26 +1,8 @@
-require 'rubygems' 
-require 'sinatra'  
-require 'data_mapper'
+# encoding: utf-8
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/pope.db") 
+require 'sinatra'
 
-class Pope  
-  include DataMapper::Resource  
-  property :id, Serial  
-  property :name, Text, :required => true  
-  property :title, Text, :required => true
-  property :born, Text, :required => true
-end
-
-class Vote
-  include DataMapper::Resource
-  property :id, Serial
-  property :pope_id, Integer, :required => true
-  property :email, Text, :required => true
-  belongs_to :pope
-end
-  
-DataMapper.finalize.auto_upgrade!
+require_relative 'models/init'
 
 get '/' do  
   @popes = Pope.all
@@ -39,3 +21,4 @@ get '/results' do
   @votes = Vote.all
   erb :results
 end
+
