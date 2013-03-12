@@ -82,7 +82,7 @@ before_exec do |server|
 end
 
 before_fork do |server, worker|
-  ActiveRecord::Base.connection.disconnect!
+  # ActiveRecord::Base.connection.disconnect!
 
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
