@@ -1,9 +1,7 @@
-require "rubygems"
-require "bundler"
-Bundler.setup
-
 require 'sinatra'
-
-require File.expand_path(File.join(*%w[ config environment ]), File.dirname(__FILE__))
-
+ 
+set :environment, :production
+disable :run
+ 
+require File.join(File.dirname(__FILE__), 'pope')
 run Sinatra::Application
