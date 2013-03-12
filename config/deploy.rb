@@ -95,13 +95,13 @@ server "pope.labs.polarion.com", :app, :web, :db, :primary => true
 before 'deploy:setup',   'rvm:install_rvm'
 before 'deploy:setup',   'rvm:install_ruby'
 after  'deploy',         'deploy:cleanup'
-#after  'deploy:update_code', 'deploy:symlink_shared'
+after  'deploy:update_code', 'deploy:symlink_shared'
 
 
 namespace :deploy do
   desc "Symlink shared configs and folders on each release."
   task :symlink_shared do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/pope.db #{release_path}/pope.db"
   end
 end
 
