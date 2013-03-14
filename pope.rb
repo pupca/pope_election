@@ -5,8 +5,9 @@ require 'sinatra'
 require_relative 'models/init'
 
 get '/' do  
-  @popes = Pope.all
-  erb :home
+  # @popes = Pope.all
+  # erb :home
+  erb :frantisek
 end
 
 post '/' do
